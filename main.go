@@ -5,16 +5,20 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"os/exec"
 )
 
 var HelloMessage string
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
+	HelloMessage := "Hello World"
+	out, _ := exec.Command("bash", "-c", "hostname").Output()
+	HelloMessage = HelloMessage + ": " + string(out)
 	fmt.Fprintf(w, HelloMessage)
 }
 
 func main() {
-	Configuration()
+	// Configuration()
 	http.HandleFunc("/", helloWorld)
 	http.ListenAndServe(":8080", nil)
 }
