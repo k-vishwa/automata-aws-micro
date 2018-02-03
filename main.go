@@ -11,7 +11,7 @@ import (
 var HelloMessage string
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
-	HelloMessage := "Hello World-Fail"
+	HelloMessage := "Hello World-1"
 	out, _ := exec.Command("bash", "-c", "hostname").Output()
 	HelloMessage = HelloMessage + ": " + string(out)
 	fmt.Fprintf(w, HelloMessage)
