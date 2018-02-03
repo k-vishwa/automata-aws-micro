@@ -11,7 +11,7 @@ import (
 var HelloMessage string
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
-	HelloMessage := "Hello World-1"
+	HelloMessage := "Hello World-Green"
 	out, _ := exec.Command("bash", "-c", "hostname").Output()
 	HelloMessage = HelloMessage + ": " + string(out)
 	fmt.Fprintf(w, HelloMessage)
@@ -20,7 +20,7 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// Configuration()
 	http.HandleFunc("/", helloWorld)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8081", nil)
 }
 
 type Config struct {
